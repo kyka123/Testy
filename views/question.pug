@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        include ./includes/head.pug
+        link(rel="stylesheet", href="../css/question.css")
+
+    body
+        p.name #{name}
+        div.wrapper
+            h1.title
+                |#{ parseInt(questionId) + 1 }. #{ question }
+            form(method="post", class="form")
+                each answer, index in answers
+                    label.answer-box
+                        input(type="radio", , name=questionId, id=index, value=index, class="answer-box__input", checked=checked==index,)
+                        span( class='answer-box__checkmark')
+                        | #{answer}
+                button(type="submit", class="arrow-btn arrow-btn--left", formaction=`/saveAnswerAndRedirect/${parseInt(questionId) - 1}`)
+                button(type="submit", class="arrow-btn arrow-btn--right" formaction=`/saveAnswerAndRedirect/${parseInt(questionId) + 1}`)

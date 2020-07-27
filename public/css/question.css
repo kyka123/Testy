@@ -1,0 +1,141 @@
+body {
+    overflow: hidden;
+}
+
+.form {
+    margin: 0;
+}
+
+.wrapper {
+    padding: 0 10%;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 800;
+}
+
+.title::after {
+    width: 100%;
+}
+
+.answer-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    max-width: 100%;
+}
+.answer-box__input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    display: none;
+}
+
+.answer-box__checkmark {
+    position: relative;
+    min-height: 32px;
+    min-width: 32px;
+    border-radius: 5px;
+    border: 7px solid #ccc;
+    margin: 15px 10px;
+}
+
+.answer-box__input:checked ~ .answer-box__checkmark::after {
+    opacity: 1;
+}
+
+.answer-box__input:checked ~ .answer-box__checkmark {
+    border-color: var(--const-primary-color);
+}
+
+.answer-box__checkmark::after {
+    content: '';
+    position: absolute;
+    top: -80%;
+    left: -10%;
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+    background-image: url('../img/checkmark.svg');
+    background-position: 0 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transition: opacity 0.5s;
+}
+
+.arrow-btn {
+    position: fixed;
+    bottom: 0;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.arrow-btn--right::before,
+.arrow-btn--left::before {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    display: block;
+    width: 95px;
+    height: 50px;
+    background-image: url('../img/arrow.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.arrow-btn--right::after,
+.arrow-btn--left::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: 100vh;
+    background-color: var(--primary-color);
+    width: 5vw;
+    z-index: -1;
+}
+
+.arrow-btn--right,
+.arrow-btn--right::after,
+.arrow-btn--right::before {
+    right: 0;
+}
+
+.arrow-btn--left,
+.arrow-btn--left::after,
+.arrow-btn--left::before {
+    left: 0;
+}
+
+.arrow-btn--left::before {
+    transform: rotate(180deg);
+}
+
+.name {
+    z-index: 1;
+    position: relative;
+    margin: 20px;
+}
+
+@media (min-width: 800px) {
+    .answer-box__checkmark {
+        min-height: 50px;
+        min-width: 50px;
+        border-width: 10px;
+        cursor: pointer;
+    }
+    .arrow-btn--right::before,
+    .arrow-btn--left::before {
+        width: 190px;
+        height: 100px;
+    }
+    .title {
+        font-size: 2em;
+    }
+}

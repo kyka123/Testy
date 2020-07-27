@@ -1,0 +1,40 @@
+- let sdf = true;
+<!DOCTYPE html>
+html(lang="pl")
+    head
+        include ./includes/head.pug
+        link(rel="stylesheet", href="css/home.css")
+    body
+        .home
+            if message && sdf
+                .messageLightbox
+                    h2.messageLightbox__title Cześć
+                    p.messageLightbox__content= message
+                    button(onClick="closeLightbox()",class="btn messageLightbox__btn") Ok!
+            h1.title.title--primary.home__title Witaj w testach
+            form(action="/login", method="post", class="form home__from")
+                h2.form__title Log in
+                if errors && errors.name
+                    p.form--error #{errors.name.msg}
+                input(type="text", name="name", id="name", placeholder="name", class="input", maxlength="30", value=validated ? validated.name : "")
+                if errors && errors.email
+                    p.form--error #{errors.email.msg}
+                input(type="email", name="email", id="email", placeholder="email", class="input", maxlength="50",  value=validated ? validated.email : "" )
+                button(type="submit" class="btn form__btn") Zaczynamy !
+            button(class="btn btn--secondary btn--toggle-rules", onclick="toggleRules()") Zasady
+        .rules
+            h1.title.title--secondary.home__title
+                | Zasady
+            p.rules__content
+                | 1. W teście masz do rozwiązania 20 zadań zamkniętych. Zamyka się on w monecie kliknięcia przycisku "end", który znajduje się przy ostatnim pytaniu. Jeżeli podczas rozwiązywania zadań przez przypadek wyłączysz kartę, nie martw się, po włączeniu strony głównej zostaniesz przeniesiony do ostatniego pytania.
+                br
+                br
+                | 2. Podczas trwania tego testu obowiązuje zakaz korzystania z telefonów komórkowych, oraz innych stron internetowych.
+                br
+                br
+                | 3. Proszę nie bać się zadawać pytań,
+                br
+                br
+                | Powodzenia
+
+        script(src="js/home.js")

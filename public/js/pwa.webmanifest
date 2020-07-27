@@ -1,0 +1,15 @@
+{
+    "name": "Testy",
+    "description": "by Krzysztof Kasprzyk",
+    "icons": [
+        {
+            "src": "../img/logo1.png",
+            "sizes": "111x117",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "fullscreen",
+    "theme_color": "#ffeb34",
+    "background_color": "#fff"
+}
